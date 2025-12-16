@@ -64,8 +64,7 @@ jobs:
         haxe-version: latest
     - uses: actions/checkout@v4
       with:
-        repository: tobil4sk/haxec
-        ref: ci-hlc-mac-arm64
+        repository: HaxeFoundation/haxe
         path: haxe
     - name: Test
       run: haxe --run RunCi hl --skip-hlc
