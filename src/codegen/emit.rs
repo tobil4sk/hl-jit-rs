@@ -34,6 +34,7 @@ pub(super) fn declare_func_in_func_with_sig(
         name: ir::ExternalName::user(user_name_ref),
         signature,
         colocated: false,
+        patchable: false,
     })
 }
 
@@ -154,6 +155,7 @@ impl<'a> EmitCtx<'a> {
                                 kind: StackSlotKind::ExplicitSlot,
                                 size: t.bytes(),
                                 align_shift: t.bytes().next_power_of_two().ilog2() as u8,
+                                key:  None,
                             }))
                         } else {
                             let v = builder.declare_var(t);
