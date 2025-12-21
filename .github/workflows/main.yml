@@ -65,6 +65,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: HaxeFoundation/haxe
+        ref: 1ba597fa96a35116c921a6bff77b7c46ea658968
         path: haxe
     - name: Test
       run: haxe --run RunCi hl --skip-hlc
