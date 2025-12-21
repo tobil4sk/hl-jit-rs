@@ -13,6 +13,8 @@ pub unsafe extern "C-unwind" fn static_call_impl<T>(
         "   .cfi_startproc",
         "   stp fp, lr, [sp, #-16]!",
         "   .cfi_adjust_cfa_offset 16",
+        "   .cfi_offset 29, -16",
+        "   .cfi_offset 30, -8",
         "   mov fp, sp",
         "   .cfi_def_cfa_register fp",
         // Move function ptr, stack begin and stack end
@@ -39,6 +41,8 @@ pub unsafe extern "C-unwind" fn static_call_impl<T>(
         "   1: blr x9",
         "   mov sp, fp",
         "   ldp fp, lr, [sp], #16",
+        "   .cfi_restore 29",
+        "   .cfi_restore 30",
         "	.cfi_def_cfa sp, 0",
         "   ret",
         "   .cfi_endproc",
